@@ -21,6 +21,6 @@
     "url": "git+https://github.com/tiagoangelods/react-native-yz-vlcplayer.git"
   },
   "homepage": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
-  "summary": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
+  "description": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
   "license": "MIT"
 }
