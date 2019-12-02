@@ -18,4 +18,6 @@ Pod::Spec.new do |s|
   s.dependency 'React'
   s.frameworks = 'MobileVLCKit'
   s.vendored_frameworks = 'MobileVLCKit.framework'
+  
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '/Applications/Xcode.app/Contents/Developer/Library/Frameworks' }
 end
