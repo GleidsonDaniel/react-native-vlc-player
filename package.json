@@ -14,11 +14,13 @@
     "react-native",
     "mp4"
   ],
-  "author": "yuanzhou.xu",
-  "email": "635043894@qq.com",
+  "author": "tiagoangelods",
+  "email": "no@email.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuyuanzhou/react-native-yz-vlcplayer.git"
+    "url": "git+https://github.com/tiagoangelods/react-native-yz-vlcplayer.git"
   },
+  "homepage": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
+  "summary": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
   "license": "MIT"
 }
