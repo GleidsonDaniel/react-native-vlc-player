@@ -1,6 +1,5 @@
 /**
  * Created by yuanzhou.xu on 2018/5/15.
- * modified by tiagoangelods react-native > 0.60
  */
 
 import React, { Component } from 'react';
@@ -80,7 +79,6 @@ export default class VlCPlayerViewByMethod extends Component {
     this.autoplaySize = 0;
     this.autoplayAdSize = 0;
     this.autoReloadLiveSize = 0;
-    this.showControls = false;
   }
 
   static navigationOptions = {
@@ -90,6 +88,7 @@ export default class VlCPlayerViewByMethod extends Component {
   state = {
     isEndAd: false,
     isFull: false,
+    showControls: false,
     showLoading: true,
     currentUrl: '',
     storeUrl: '',
@@ -258,8 +257,6 @@ export default class VlCPlayerViewByMethod extends Component {
     useVip: PropTypes.bool,
     //非vip观看长度
     vipPlayLength: PropTypes.number,
-    
-    showControls: PropTypes.bool,
 
   };
 
@@ -1036,6 +1033,7 @@ export default class VlCPlayerViewByMethod extends Component {
       pauseByAutoplay: false,
       isEndAd:isEndAd,
       isEnding: false,
+      showControls: false,
     },()=>{
       if(reloadWithAd){
         this.resumeAd();
@@ -1097,6 +1095,7 @@ export default class VlCPlayerViewByMethod extends Component {
       BackHandle && BackHandle.removeBackFunction(_fullKey);
       this.setState({
         isFull: false,
+        showControls: false,
       });
     }
 
@@ -1115,6 +1114,7 @@ export default class VlCPlayerViewByMethod extends Component {
     Orientation && Orientation.lockToLandscape && Orientation.lockToLandscape();
     this.setState({
       isFull: true,
+      showControls: false,
     });
     if(this.props.useVideoAspectRatioByMethod){
       if(fullVideoAspectRatio){
@@ -1186,10 +1186,41 @@ export default class VlCPlayerViewByMethod extends Component {
 
 
   _onBodyPress = ()=> {
-    let { showChapter } = this.state;
+    let { showControls, showChapter } = this.state;
     if(showChapter){
       this._hideChapter(250);
+    }else{
+      if(showControls){
+        this.setState({ showControls: false });
+      }else{
+        this.setState({ showControls: true });
+      }
     }
+    //console.log('_onBodyPress',showControls)
+    /* let currentTime = new Date().getTime();
+     if (this.touchTime === 0) {
+     this.touchTime = currentTime;
+     if (showControls) {
+     this._hideChapter(0);
+     }
+     if(showControls){
+     this.setState({ showControls: false });
+     }else{
+     this.setState({ showControls: true });
+     }
+     } else {
+     if (currentTime - this.touchTime >= 500) {
+     if (showControls) {
+     this._hideChapter(0);
+     }
+     this.touchTime = currentTime;
+     if(showControls){
+     this.setState({ showControls: false });
+     }else{
+     this.setState({ showControls: true });
+     }
+     }
+     }*/
   }
 
   _onBodyPressIn = ()=>{
@@ -1198,6 +1229,12 @@ export default class VlCPlayerViewByMethod extends Component {
 
   checkShowControls = ()=> {
     let currentTime = new Date().getTime();
+    let { showControls } = this.state;
+    if (showControls && (currentTime - this.touchControlTime >= 4000)) {
+      /*this.setState({
+       showControls: false
+       });*/
+    }
   }
 
 
@@ -1517,7 +1554,7 @@ export default class VlCPlayerViewByMethod extends Component {
         </View>
         }
         {this.getChapterView()}
-        {this.showControls && (<View style={[styles.bottomView,{}]}>
+        <View style={[styles.bottomView,{}]}>
           <ControlBtn
             showSlider={!isAd}
             muted={muted}
@@ -1577,9 +1614,12 @@ export default class VlCPlayerViewByMethod extends Component {
                   }
                 }
               }
+              this.setState({
+                showControls: false
+              })
             }}
           />
-        </View>)}
+        </View>
       </View>
     )
   }
@@ -1666,7 +1706,7 @@ export default class VlCPlayerViewByMethod extends Component {
       showAd,
       adUrl,
     } = this.props;
-    let { isFull, isEnding, isVipPlayEnd, isError, showChapter, isEndAd, netInfo, currentUrl, pauseByAutoplay } = this.state;
+    let { isFull, showControls, isEnding, isVipPlayEnd, isError, showChapter, isEndAd, netInfo, currentUrl, pauseByAutoplay } = this.state;
     if(isError && !pauseByAutoplay){
       return this.getErrorView();
     }else if(isEnding){
@@ -1680,6 +1720,10 @@ export default class VlCPlayerViewByMethod extends Component {
       if(adUrl && currentUrl){
         if(!isEndAd){
           return this.getAdView();
+        }else{
+          if(showControls){
+            return this.getControlView();
+          }
         }
       }else{
         return this.getLoadingView();
@@ -1687,6 +1731,10 @@ export default class VlCPlayerViewByMethod extends Component {
     }else{
       if(!currentUrl){
         return this.getLoadingView();
+      }else{
+        if(showControls){
+          return this.getControlView();
+        }
       }
     }
     return this.getCommonView();
