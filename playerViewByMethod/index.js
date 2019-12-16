@@ -79,6 +79,7 @@ export default class VlCPlayerViewByMethod extends Component {
     this.autoplaySize = 0;
     this.autoplayAdSize = 0;
     this.autoReloadLiveSize = 0;
+    this.showControls = false;
   }
 
   static navigationOptions = {
@@ -257,6 +258,8 @@ export default class VlCPlayerViewByMethod extends Component {
     useVip: PropTypes.bool,
     //非vip观看长度
     vipPlayLength: PropTypes.number,
+    
+    showControls: PropTypes.bool,
 
   };
 
@@ -1554,7 +1557,7 @@ export default class VlCPlayerViewByMethod extends Component {
         </View>
         }
         {this.getChapterView()}
-        <View style={[styles.bottomView,{}]}>
+        {this.showControls && (<View style={[styles.bottomView,{}]}>
           <ControlBtn
             showSlider={!isAd}
             muted={muted}
@@ -1619,7 +1622,7 @@ export default class VlCPlayerViewByMethod extends Component {
               })
             }}
           />
-        </View>
+        </View>)}
       </View>
     )
   }
