@@ -1,15 +1,13 @@
 package com.yuanzhou.vlc.vlcplayer;
 
-import android.support.annotation.StringDef;
-import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.StringDef;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
