@@ -1,6 +1,6 @@
 {
-  "name": "react-native-yz-vlcplayer",
-  "version": "1.2.7",
+  "name": "react-native-vlc-player",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,15 +12,16 @@
     "android",
     "ios",
     "react-native",
-    "mp4"
+    "mp4",
+    "rtsp"
   ],
-  "author": "tiagoangelods",
-  "email": "no@email.com",
+  "author": "GleidsonDaniel",
+  "email": "gleidson10daniel@gmail.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiagoangelods/react-native-yz-vlcplayer.git"
+    "url": "git+https://github.com/GleidsonDaniel/react-native-vlc-player.git"
   },
-  "homepage": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
-  "description": "https://github.com/tiagoangelods/react-native-yz-vlcplayer",
+  "homepage": "https://github.com/GleidsonDaniel/react-native-vlc-player",
+  "description": "https://github.com/GleidsonDaniel/react-native-vlc-player",
   "license": "MIT"
 }

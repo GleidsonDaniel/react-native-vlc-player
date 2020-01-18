@@ -1,23 +1,15 @@
-require 'json'
-
-package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
-
 Pod::Spec.new do |s|
-  s.name         = package['name']
-  s.version      = package['version']
-  s.summary      = package['description']
-  s.license      = package['license']
-
-  s.authors      = package['author']
-  s.homepage     = package['homepage']
-  s.platform     = :ios, "9.0"
-
-  s.source       = { :git => "https://github.com/tiagoangelods/react-native-yz-vlcplayer.git", :tag => "v#{s.version}" }
-  s.source_files  = "ios/**/*.{h,m}"
-
+  s.name         = "react-native-vlc-player"
+  s.version      = "0.3.4"
+  s.summary      = "Introducing Material Design to apps built with React Native."
+  s.requires_arc = true
+  s.author       = { 'Daniel Silva' => 'gleidson10daniel@gmail.com' }
+  s.license      = 'MIT'
+  s.homepage     = 'https://github.com/GleidsonDaniel/react-native-vlc-player'
+  s.source       = { :git => "https://github.com/GleidsonDaniel/react-native-vlc-player.git" }
+  s.source_files = 'ios/RCTVLCPlayer/*'
+  s.platform     = :ios, "8.0"
+  s.static_framework = true  
   s.dependency 'React'
-  s.frameworks = 'MobileVLCKit'
-  s.vendored_frameworks = 'MobileVLCKit.framework'
-  
-  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '~/Library' }
+  s.dependency 'MobileVLCKit-unstable', '3.0.0a44'
 end
