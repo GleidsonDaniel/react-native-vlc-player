@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "react-native-vlc-player"
+  s.name         = "react-native-yz-vlcplayer"
   s.version      = "0.3.4"
   s.summary      = "Introducing Material Design to apps built with React Native."
   s.requires_arc = true
