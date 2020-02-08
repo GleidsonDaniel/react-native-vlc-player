@@ -106,19 +106,19 @@ export default class VlCPlayerViewByMethod extends Component {
 
   static defaultProps = {
     endingViewText: {
-      endingText: '视频播放结束',
-      reloadBtnText: '重新播放',
-      nextBtnText: '下一个'
+      endingText: 'Fim da reprodução do vídeo',
+      reloadBtnText: 'Recarregar',
+      nextBtnText: 'Proximo'
     },
     errorViewText: {
-      errorText: '视频播放出错',
-      reloadBtnText: '重新播放',
+      errorText: 'Erro na reprodução do vídeo',
+      reloadBtnText: 'Recarregar',
     },
     vipEndViewText: {
-      vipEndText: '试看结束',
-      boughtBtnText: '请购买后观看立即购买',
+      vipEndText: 'Experimente',
+      boughtBtnText: 'Por favor, assista depois de comprar',
     },
-    chapterText: '章节',
+    chapterText: 'Capítulo',
     autoplay: false,
     showAd: false,
     showTop: false,
